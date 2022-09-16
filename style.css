@@ -1,12 +1,81 @@
+html{
+    font-family: var(--global--font-secondary);
+}
+
 body{
     margin: 0;
-    font-family: Arial, "Helvetica-Nueue", Helvetica, sans-serif;
+    /* font-family: Arial, "Helvetica-Nueue", Helvetica, sans-serif; */
     font-size: 18px;
     /* line-height: 1.5; */
 }
+button, a {
+    cursor: pointer;
+}
+
+a {
+    background-color: transparent;
+}
 
 :root {
+    --global--font-primary: var(--font-headings, 'Playfair Display', Georgia, Times, serif);
+    --global--font-secondary: var(--font-base, 'Fira Sans', Helvetica, Arial, sans-serif);
+    --global--font-code: monospace, monospace;
+    --global--font-ui: var(--font-base, var(--global--font-secondary));
+    --global--font-size-root: 18px;
+    --global--font-size-ratio: 1.2;
+    --global--font-size-base: 1em;
+    --global--font-size-xs: 14px;
+    --global--font-size-sm: 16px;
+    --global--font-size-md: 18px;
+    --global--font-size-lg: 24px;
+    --global--font-size-xl: 28px;
+    --global--font-size-xxl: 32px;
+    --global--font-size-xxxl: 48px;
+    --global--letter-spacing: normal;
+    --global--font-weight: normal;
+    --global--line-height-base: 1;
+    --global--line-height-body: 1.7;
+    --global--line-height-heading: 1.3;
+    --global--color-primary: #000000;
+    --global--color-secondary: #3C8067;
+    --global--color-primary-hover: var( --global--color-secondary );
+    --global--color-secondary-hover: #336D58;
+    --global--color-black: black;
+    --global--color-white: white;
+    --global--color-foreground: #333333;
+    --global--color-foreground-low-contrast: #444444;
+    --global--color-foreground-high-contrast: #000000;
+    --global--color-background: #FFFFFF;
+    --global--color-tertiary: #FAFBF6;
+    --global--color-background-dark: #DDDDDD;
+    --global--color-border: #EFEFEF;
+    --global--color-text-selection: #EBF2F0;
+    --global--color-alert-success: yellowgreen;
+    --global--color-alert-info: skyblue;
+    --global--color-alert-warning: gold;
+    --global--color-alert-error: salmon;
+    --global--spacing-unit: 20px;
+    --global--spacing-measure: unset;
+    --global--spacing-horizontal: 25px;
     --global--spacing-vertical: 30px;
+    --global--elevation: 1px 1px 3px 0px rgba( 0, 0, 0, 0.2 );
+    --global--border-radius-sm: 9px;
+    --global--border-radius-md: 13.5px;
+    --global--border-radius-lg: 18px;
+    --global--border-radius-pill: 180px;
+    --global--border-radius-none: 0;
+    --form--font-family: var(--global--font-secondary);
+    --form--font-size: var(--global--font-size-md);
+    --form--line-height: var(--global--line-height-body);
+    --form--color-text: var(--global--color-foreground);
+    --form--border-color: var(--global--color-border);
+    --form--border-width: 2px;
+    --form--border-radius: 0;
+    --form--spacing-unit: calc(0.5 * var(--global--spacing-unit));
+    --form--background-color: transparent;
+    --form--box-shadow: none;
+    --branding--title--font-weight: 700;
+
 }
 .main_page_1 {
     text-align: center;
@@ -19,4 +88,36 @@ img {
     margin-right: auto;
     width: 160px;
     height: 160px;
+}
+
+.site-branding {
+    color: var(--branding--color-text);
+    text-align: center;
+}
+
+.site-title {
+    color: var(--branding--color-link);
+    font-family: var(--global--font-primary);
+    letter-spacing: normal;
+    line-height: var(--global--line-height-heading);
+    margin-bottom: calc( var(--global--spacing-vertical) / 2);
+}
+
+.site-title a:visited {
+    color: currentColor;
+}
+.site-title > a {
+    text-decoration-color: var(--global--color-secondary);
+}
+.site-title a {
+    background-image: linear-gradient(to right, var(--global--color-secondary) 100%, transparent 100%);
+    background-position: 0 1.22em;
+    background-repeat: repeat-x;
+    background-size: 8px 1.5px;
+    border-bottom: none;
+    color: currentColor;
+    font-weight: var(--branding--title--font-weight);
+    text-decoration: none;
+    text-shadow: 1px 0px var(--global--color-background), -1px 0px var(--global--color-background), -2px 0px var(--global--color-background), 2px 0px var(--global--color-background), -3px 0px var(--global--color-background), 3px 0px var(--global--color-background), -4px 0px var(--global--color-background), 4px 0px var(--global--color-background), -5px 0px var(--global--color-background), 5px 0px var(--global--color-background);
+    transition: background-size 0.1s ease-out;
 }
