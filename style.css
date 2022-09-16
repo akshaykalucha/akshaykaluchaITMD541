@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    font-family: Arial, "Helvetica-Nueue", Helvetica, sans-serif;
+    font-size: 18px;
+    /* line-height: 1.5; */
+}
+
+:root {
+    --global--spacing-vertical: 30px;
+}
+.main_page_1 {
+    text-align: center;
+    padding-top: calc(3 * var(--global--spacing-vertical));
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 160px;
+    height: 160px;
+}
