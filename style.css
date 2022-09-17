@@ -18,6 +18,7 @@ button, a {
 
 a {
     background-color: transparent;
+    text-underline-offset: 0.3em;
 }
 
 :root {
@@ -194,12 +195,6 @@ img {
     margin-top: calc( var(--global--spacing-vertical) / 5);
 }
 
-.site-title a:visited {
-    color: currentColor;
-}
-.site-title > a {
-    text-decoration-color: var(--global--color-secondary);
-}
 .site-title a {
     background-image: linear-gradient(to right, var(--global--color-secondary) 100%, transparent 100%);
     background-position: 0 1.22em;
@@ -211,6 +206,13 @@ img {
     text-decoration: none;
     text-shadow: 1px 0px var(--global--color-background), -1px 0px var(--global--color-background), -2px 0px var(--global--color-background), 2px 0px var(--global--color-background), -3px 0px var(--global--color-background), 3px 0px var(--global--color-background), -4px 0px var(--global--color-background), 4px 0px var(--global--color-background), -5px 0px var(--global--color-background), 5px 0px var(--global--color-background);
     transition: background-size 0.1s ease-out;
+}
+
+.site-title a:visited {
+    color: currentColor;
+}
+.site-title > a {
+    text-decoration-color: var(--global--color-secondary);
 }
 
 .site-title a:hover, .site-title a:focus {
