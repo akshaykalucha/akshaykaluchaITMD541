@@ -216,7 +216,7 @@ img {
 }
 
 .site-title a:hover, .site-title a:focus {
-    color: var(--global--color-secondary);
+    color: #3C8067;
     background-size: 8px 0px;
 }
 
@@ -292,4 +292,29 @@ ul{
     font-size: 16px;
     font-family: var(--global--font-secondary);
     font-weight: normal;
+}
+
+.primary-navigation .menu-item > a:hover {
+    color: #3C8067;
+    border-color: #3C8067;
+}
+
+.primary-navigation .menu-item > a:active {
+    color: #3C8067
+}
+.primary-navigation .menu-item > a:focus {
+    color: #3C8067;
+}
+nav a {
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+}
+a {
+    text-underline-offset: 0.3em;
+}
+
+.site *:focus {
+    outline-width: 1px;
+    outline-style: dotted;
+    outline-color: #3C8067;
 }
