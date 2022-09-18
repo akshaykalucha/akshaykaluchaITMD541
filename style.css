@@ -179,6 +179,10 @@ img {
     height: 120px;
 }
 
+ul {
+    font-family: var(--global--font-secondary);
+}
+
 .site-branding {
     color: #333333;
     text-align: center;
@@ -228,6 +232,19 @@ img {
     .site-title a {
         background-size: 8px 2px;
     }
+
+    .entry-content > * {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* .site-header {
+        
+    } */
+}
+
+#section1{
+    margin-bottom: calc(3 * 30px);
 }
 
 .site-description {
@@ -317,4 +334,88 @@ a {
     outline-width: 1px;
     outline-style: dotted;
     outline-color: #3C8067;
+}
+
+.social-navigation > div > ul {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.social-navigation > div > ul > li {
+    margin-bottom: calc(2 * calc(0.5 * calc(0.66 * 20px)));
+}
+
+.social-navigation > div > ul > li:first-of-type > a {
+    padding-left: 0;
+}
+
+.social-navigation a {
+    color: #333333;
+    display: inline-block;
+    padding: 0 calc(0.5 * calc(0.66 * 20px));
+}
+
+.screen-reader-text {
+    clip: rect(1px,1px,1px,1px);
+    word-wrap: normal!important;
+    border: 0;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute!important;
+    width: 1px;
+}
+
+.social-navigation svg {
+    fill: currentColor;
+    vertical-align: middle;
+}
+
+
+.site-main {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+    letter-spacing: 1px;
+}
+
+.site-main > *:last-child {
+    margin-bottom: 0;
+}
+
+.site-main > *:first-child {
+    margin-top: 0;
+}
+article {
+    max-width: none;
+}
+.entry-content {
+    margin-top: 0;
+}
+
+.entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.entry-attachment):not(.woocommerce) {
+    max-width: min(calc(100vw - (2 * 25px)), 620px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entry-content > *:first-child {
+    margin-top: 0;
+}
+.entry-content p {
+    word-wrap: break-word;
 }
