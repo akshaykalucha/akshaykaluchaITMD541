@@ -369,6 +369,10 @@ a {
     padding: 0 calc(0.5 * calc(0.66 * 20px));
 }
 
+.social-navigation a:hover {
+    color: #3C8067;
+}
+
 .screen-reader-text {
     clip: rect(1px,1px,1px,1px);
     word-wrap: normal!important;
