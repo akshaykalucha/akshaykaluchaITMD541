@@ -1,8 +1,8 @@
 :root{
-    --cyan-strong: hsl(172, 67%, 45%);
-    --cyan-very-dark: hsl(183, 100%, 15%);
-    --cyan-dark-grayish : hsl(186, 14%, 43%);
-    --cyan-light-grayish : hsl(185, 41%, 84%);
+    --cyan-strong: #d2e1f5;
+    --cyan-very-dark: #845EC2;
+    --cyan-dark-grayish : hsl(185, 14%, 49%);
+    --cyan-light-grayish : #B39CD0;
     --white: hsl(0, 0%, 100%);
 }
 
@@ -63,7 +63,7 @@ body{
 .amount{
     text-align: right;
     font-size: 25px;
-    color: rgba(52,186,169,255);
+    color: #d2e1f5;
 }
 
 .tip-buttons{
@@ -123,4 +123,26 @@ input {
     left: 0;
     top: 2px;
     padding: 10px 10px;
+}
+
+
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .main-title{
+        padding-top: 25%;
+    }
+
+    .main-container{
+        display: block;
+    }
+
+    .main-content{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 }
