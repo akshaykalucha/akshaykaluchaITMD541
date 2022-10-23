@@ -129,6 +129,7 @@ input {
 
 /* Mobile Devices */
 @media (max-width: 480px) {
+    body {overflow: hidden; }
     .main-title{
         padding-top: 25%;
     }
