@@ -26,7 +26,7 @@ function calcTipAmount() {
     let totalTip = tipAmount * (tipPercent / 100); // get tip from tip amount and tip percent
     let totalAmount = tipAmount + totalTip; // total amount with tip
     parseInt(bill.value) > 0 && parseInt(tip.value) >= 0 ? tipDisplayed.innerHTML = `$${totalTip.toFixed(2)}` : null; // display tip amount
-    parseInt(bill.value) > 0 && parseInt(tip.value) >= 0 ? totalAmountDisplayed.innerHTML = totalAmount.toFixed(2) : null; // display total amount
+    parseInt(bill.value) > 0 && parseInt(tip.value) >= 0 ? totalAmountDisplayed.innerHTML = `$${totalAmount.toFixed(2)}` : null; // display total amount
 }
 
 // Setting custom tip value
