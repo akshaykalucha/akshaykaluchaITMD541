@@ -133,13 +133,13 @@ function getWeatherData(city, unit, hourlyorWeek) {
         console.log(err);
         alert("City not found in our database");
       });
-  }
+}
 
 
 //convert celcius to fahrenheit
 function celciusToFahrenheit(temp) {
     return ((temp * 9) / 5 + 32).toFixed(1);
-  }
+}
   
 
 
@@ -157,11 +157,11 @@ function measureUvIndex(uvIndex) {
     } else {
       uvText.innerText = "Extreme";
     }
-  }
+}
 
 
 
-  function updateHumidityStatus(humidity) {
+function updateHumidityStatus(humidity) {
     if (humidity <= 30) {
       humidityStatus.innerText = "Low";
     } else if (humidity <= 60) {
@@ -169,9 +169,9 @@ function measureUvIndex(uvIndex) {
     } else {
       humidityStatus.innerText = "High";
     }
-  }
+}
   
-  function updateVisibilityStatus(visibility) {
+function updateVisibilityStatus(visibility) {
     if (visibility <= 0.3) {
       visibilityStatus.innerText = "Dense Fog";
     } else if (visibility <= 0.16) {
@@ -189,9 +189,9 @@ function measureUvIndex(uvIndex) {
     } else {
       visibilityStatus.innerText = "Very Clear Air";
     }
-  }
+}
   
-  function updateAirQualityStatus(airQuality) {
+function updateAirQualityStatus(airQuality) {
     if (airQuality <= 50) {
       airQualityStatus.innerText = "Good";
     } else if (airQuality <= 100) {
@@ -205,9 +205,9 @@ function measureUvIndex(uvIndex) {
     } else {
       airQualityStatus.innerText = "Hazardous";
     }
-  }
+}
 
-  function getDayName(date) {
+function getDayName(date) {
     let day = new Date(date);
     let days = [
       "Sunday",
@@ -219,9 +219,9 @@ function measureUvIndex(uvIndex) {
       "Satureday",
     ];
     return days[day.getDay()];
-  }
+}
   
-  function getHour(time) {
+function getHour(time) {
     let hour = time.split(":")[0];
     let min = time.split(":")[1];
     if (hour > 12) {
@@ -230,11 +230,11 @@ function measureUvIndex(uvIndex) {
     } else {
       return `${hour}:${min} AM`;
     }
-  }
+}
 
 
 
-  function getIcon(condition) {
+function getIcon(condition) {
     if (condition === "Partly-cloudy-day") {
       return "icons/sun/27.png";
     } else if (condition === "partly-cloudy-night") {
@@ -248,9 +248,9 @@ function measureUvIndex(uvIndex) {
     } else {
       return "icons/sun/26.png";
     }
-  }
+}
 
-  function convertTimeTo12HourFormat(time) {
+function convertTimeTo12HourFormat(time) {
     let hour = time.split(":")[0];
     let minute = time.split(":")[1];
     let ampm = hour >= 12 ? "pm" : "am";
@@ -260,10 +260,10 @@ function measureUvIndex(uvIndex) {
     minute = minute < 10 ? "0" + minute : minute;
     let strTime = hour + ":" + minute + " " + ampm;
     return strTime;
-  }
+}
 
 
-  function updateForecast(data, unit, type) {
+function updateForecast(data, unit, type) {
     weatherCards.innerHTML = "";
   
     let day = 0;
@@ -306,9 +306,9 @@ function measureUvIndex(uvIndex) {
       weatherCards.appendChild(card);
       day++;
     }
-  }
+}
   
-  function changeBackground(condition) {
+function changeBackground(condition) {
     const body = document.querySelector("body");
     let bg = "";
     if (condition === "Partly-cloudy-day") {
@@ -325,4 +325,201 @@ function measureUvIndex(uvIndex) {
       bg = "images/pc.jpeg";
     }
     body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bg})`;
-  }
+}
+
+
+
+
+fahrenheitBtn.addEventListener("click", () => {
+    changeUnit("f");
+});
+celciusBtn.addEventListener("click", () => {
+    changeUnit("c");
+});
+
+
+function changeUnit(unit) {
+    if (currentUnit !== unit) {
+      currentUnit = unit;
+      {
+        //change unit on document
+        tempUnit.forEach((elem) => {
+          elem.innerText = `°${unit.toUpperCase()}`;
+        });
+        if (unit === "c") {
+          celciusBtn.classList.add("active");
+          fahrenheitBtn.classList.remove("active");
+        } else {
+          celciusBtn.classList.remove("active");
+          fahrenheitBtn.classList.add("active");
+        }
+        // call get weather after change unit
+        getWeatherData(currentCity, currentUnit, hourlyorWeek);
+      }
+    }
+}
+
+
+
+hourlyBtn.addEventListener("click", () => {
+    changeTimeSpan("hourly");
+});
+
+weekBtn.addEventListener("click", () => {
+    changeTimeSpan("week");
+});
+  
+function changeTimeSpan(unit) {
+    if (hourlyorWeek !== unit) {
+      hourlyorWeek = unit;
+      if (unit === "hourly") {
+        hourlyBtn.classList.add("active");
+        weekBtn.classList.remove("active");
+      } else {
+        hourlyBtn.classList.remove("active");
+        weekBtn.classList.add("active");
+      }
+      // update weather on time change
+      getWeatherData(currentCity, currentUnit, hourlyorWeek);
+    }
+}
+
+
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let location = search.value;
+    if (location) {
+      currentCity = location;
+      getWeatherData(currentCity, currentUnit, hourlyorWeek);
+    }
+});
+
+
+
+
+cities = [
+    "Atlanta",
+    "Las Vegas",
+    "Kentucky",
+    "Chicago",
+    "New York",
+    "Los Angeles",
+    "Vancouver",
+    "Dallas",
+    "Seattle",
+    "San Francisco",
+    "Miami",
+    "Boston",
+];
+
+var currentFocus;
+
+
+
+
+search.addEventListener("input", function (e) {
+    removeSuggestions();
+    var a,
+      b,
+      i,
+      val = this.value;
+    //if there is nothing search input do nothing
+    if (!val) {
+      return false;
+    }
+    currentFocus = -1;
+  
+    //creating a ul with a id suggestion
+    a = document.createElement("ul");
+    a.setAttribute("id", "suggestions");
+    //append the ul to its parent which is search form
+    this.parentNode.appendChild(a);
+    //adding li's with matching search suggestions
+    for (i = 0; i < cities.length; i++) {
+      //check if items start with same letters which are in input
+      if (cities[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        // if any suggestion matching then create li
+        b = document.createElement("li");
+        // ading content in li
+        //strong to make the matchin letters bold
+        b.innerHTML = "<strong>" + cities[i].substr(0, val.length) + "</strong>";
+        //remaining part of suggestion
+        b.innerHTML += cities[i].substr(val.length);
+        //input field to hold the suggestion value
+        b.innerHTML += "<input type='hidden' value='" + cities[i] + "'>";
+  
+        //adding eventListner on suggestion
+        b.addEventListener("click", function (e) {
+          //on click set the search input value with th clicked suggestion value
+          search.value = this.getElementsByTagName("input")[0].value;
+          removeSuggestions();
+        });
+  
+        //append suggestion li to ul
+        a.appendChild(b);
+      }
+    }
+});
+
+
+
+
+function removeSuggestions() {
+    //select the ul which is being adding on search input
+    var x = document.getElementById("suggestions");
+    //if x exists remove it
+    if (x) x.parentNode.removeChild(x);
+}
+
+
+
+
+search.addEventListener("keydown", function (e) {
+    var x = document.getElementById("suggestions");
+    // selaect the li elemets of suggestion ul
+    if (x) x = x.getElementsByTagName("li");
+  
+    if (e.keyCode == 40) {
+      //if key code is down button
+      currentFocus++;
+      //lets create a function to adda active suggsetion
+      addActive(x);
+    } else if (e.keyCode == 38) {
+      //if key code is up button
+      currentFocus--;
+      addActive(x);
+    }
+    if (e.keyCode == 13) {
+      //if enter is presed add the current select suggestion in input field
+  
+      e.preventDefault();
+      if (currentFocus > -1) {
+        //if any suggestion is selected click it
+        if (x) x[currentFocus].click();
+      }
+    }
+});
+
+
+
+function addActive(x) {
+    //if there is no suggestion return as it is
+  
+    if (!x) return false;
+    removeActive(x);
+    //if current focus is more than the length of suggestion arraya make it 0
+    if (currentFocus >= x.length) currentFocus = 0;
+    // if its less than 0 make it last suggestion equals
+    if (currentFocus < 0) currentFocus = x.length - 1;
+  
+    //adding active class on focused li
+    x[currentFocus].classList.add("active");
+}
+  
+  //its working but we need to remove previusly actived suggestion
+  
+function removeActive(x) {
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("active");
+    }
+}
