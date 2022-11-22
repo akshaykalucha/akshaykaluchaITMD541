@@ -96,6 +96,7 @@ function getWeatherData(city, unit, hourlyorWeek) {
         } else {
             temp.innerText = celciusToFahrenheit(today.temp.c);
         }
+        console.log(data)
         currentLocation.innerText = data.region;
         condition.innerText = today.comment;
         rain.innerText = "Perc - " + today.precip;

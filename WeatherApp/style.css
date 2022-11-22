@@ -281,3 +281,59 @@ nav .units button {
     left: 50%;
     transform: translateX(-50%);
 }
+
+
+
+
+@media (max-width: 480px) { 
+    
+  body {
+    /* display: block; */
+    padding: 80px;
+  }
+
+  .wrapper {
+    display: block;
+    width: 100%;
+    min-width: 414px;
+  }
+
+  .sidebar {
+    display: block;
+    width: 100%;
+    padding: 0px;
+  }
+  .main {
+    display: block;
+    width: 100%;
+    padding: 0px;
+  }
+  .location {
+    display: flex;
+    padding: 20px;
+    margin-top: -36px;
+  }
+
+  .weather-icon {
+    width: 46%;
+    margin-bottom: 20px;
+  }
+
+  *{
+    box-sizing: unset;
+  }
+
+  .mobile-divider {
+    padding: 20px;
+  }
+
+  .mobile-main {
+    padding: 20px;
+  }
+
+  .credits {
+    position: unset;
+    text-align: end;
+  }
+
+}
